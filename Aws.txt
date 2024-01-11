@@ -1,0 +1,68 @@
+Iaas:
+it is a type of cloud computing service that offers compute storage and networking on demand
+
+It is an infrastructure of cloud based technology 
+
+API: An API is a set of rules and protocols allows one software application to communicate with another
+     Here communicate means data    
+
+SQS:
+    1) Intro
+        # Used to asynchronously decouple the applications (It will divide the single application to multilevel application)
+    
+    2)There are 2 Queue Types:
+        Standard Queue Type , Fifo Queue Type
+    
+        Standard Queue: 
+                # unlimited Throughputs (publish any number of messages)
+                # low latency (<10ms on publish and receive)
+                # Can have duplictate messages
+        
+        Fifo Queue:
+                # Limited Throughputs 
+                    300msg without batching(batch size = 1)
+                    3000msg with batch (batch size = 10)
+                # The Queue Name must end with .fifo for fifo Queue
+    
+    3) Encryption :
+        # In flight(transit) using HTTPS API 
+        # At rest server side Encryption
+            SSE-SQS  ,  SSE-KMS
+            
+            SSE-SQS(Server Side Encryption - SQS):
+                #All the messages in the queue are encryted automatically with SQS inbuilt keys
+                #Easy to Maintain because without direct control over encryted keys
+            
+            SSE-KMS(SSE-Key Managment Service):
+                #Here Messages in the queue are encryted with key provided by KMS Very Secure
+                #Automatically rotation of keys and auditing(Involves in monitoring and recording)
+
+
+    4) Access Managment :
+        # IAM policies to regulate Access to the SQS API
+        # SQS policies
+            *Cross Account Managment(Different Aws Account can access our Queue)
+            *Aws Services Access to Queue(Different Services will Access Our Queue)
+
+    5) SQS Extended Limit :
+        # To Send Messages larger than 256KB(limit in SQS)
+        # For Larger Messages Store messages in S3 and send a message in the queue with a pointer to that file in s3(Java Library)
+        
+    6) Dead Letter Queue : 
+        # An DLQ must be same type of SQS
+        # DLQ use to store failed message proccessing in Main Queue
+        # Redrive to Source (When mssgs are proccessed change to main queue) 
+            
+
+SNS:
+    1)Intro :
+        # Used to BroadCast Messages
+        # Pub-Sub Model (Publisher will publish messages and Subscribers will Subscribe Messagess)
+        # Instant Delivery (does not use queues)
+
+    2) Encryption :
+        # In-flight Encryption by using HTTPS API
+        # 
+
+EC2: 
+    
